@@ -1,0 +1,310 @@
+:root {
+    --pcolor: cyan;
+    --scolor: magenta;
+    --tcolor: yellow;
+    --dpcolor: darkcyan;
+    --dscolor: darkmagenta;
+}
+
+::selection {
+    background-color: var(--dpcolor);
+    color: var(--scolor);
+}
+
+.code-box::selection {
+    background-color: var(--scolor);
+    color: var(--tcolor);
+}
+
+@font-face {
+    font-family: 'Sixtyfour-Regular';
+    src: url("./fonts/sixtyfour/Sixtyfour-Regular-VariableFont_BLED,SCAN.ttf") format('truetype'),
+         url("./fonts/sixtyfour/static/Sixtyfour-Regular.ttf") format('opentype');
+    /* Add other font formats and variations as needed */
+}
+
+@font-face {
+    font-family: 'Kanit-Light';
+    src: url("./fonts/Kanit/Kanit-Light.ttf") format('opentype');
+}
+
+html {
+    font-size: 62.5%;
+    margin: 0; /* adjusting rem to 10px */
+    background-color: darkgray;
+}
+
+body {
+    line-height: 1.25;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sixtyfour-Regular' sans-serif;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.head h1 {
+    display: block;
+    font-family: 'Sixtyfour-Regular';
+    font-size: 3rem;
+    color: var(--pcolor);
+}
+
+.head h1:hover {
+    color: var(--scolor);
+    transform: translateX(-0.5rem) translateY(-0.5rem);
+    text-shadow: 1rem 1rem var(--tcolor);
+}
+
+.head p {
+    position: sticky;
+    top: 1rem;
+    display: block;
+    font-family: 'Kanit-Light';
+    font-size: 1rem;
+    font-weight: 400;
+    color: lightgray;
+    letter-spacing: 1.5rem;
+    padding-top: .25rem;
+}
+
+.head p:hover {
+    color: var(--tcolor);
+    transform: translateX(0.5rem) translateY(0.5rem);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.flex-style { /* flexibility within the main block (must have a width)*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.box {
+    flex: 1 0 100%; /* mobile-first meaning one column, working towards desktop viewport with media queries */
+    display: flex;
+    flex-direction: column; /* sets axis of element vertical */
+    justify-content: flex-start;
+    /* !! add a transition attribute for viewport resizing !! */
+    margin: 2rem;
+    outline: none;
+}
+
+.box p {
+    font-family: 'Kanit-Light';
+    text-align: justify;
+    font-size: 1.6rem;
+    transition: color .5s ease;
+}
+
+
+.s1, .s2 p {
+    color: darkgray;
+}
+
+.s3 p {
+    color: lightgray;
+}
+    
+.s1 {
+    min-height: auto;
+    padding: 2rem;
+    transition: box-shadow .5s ease;
+    background-image: linear-gradient(lightgray, darkgray);
+}
+
+.s1:hover {
+    box-shadow: 0rem -.5rem 2.3rem var(--pcolor);
+}
+
+.s1:hover > h2 {
+    color: var(--dpcolor);
+}
+
+.s1:focus {
+    box-shadow: 0rem 1rem 2.3rem var(--pcolor);
+}
+
+.s1:focus > h2 {
+    color: var(--dpcolor);
+}
+
+.s2 {
+    min-height: auto;
+    padding: 2rem;
+    transition: box-shadow .5s ease;
+    background-image: linear-gradient(lightgray, darkgray);
+}
+
+.s2:hover {
+    box-shadow: 0rem -.5rem 2.3rem var(--scolor);
+}
+
+.s2:hover > h2 {
+    color: var(--dscolor);
+}
+
+.s2:focus {
+    box-shadow: 0rem 1rem 2.3rem var(--scolor);
+}
+
+.s2:focus > h2 {
+    color: var(--dscolor);
+}
+
+.s3 {
+    min-height: auto;
+    padding: 2rem;
+    transition: box-shadow .5s ease;
+    background-image: linear-gradient(darkgray, lightgray);
+}
+
+.s3:hover{
+    box-shadow: 0rem -.5rem 2.7rem var(--tcolor);
+}
+
+.s3:hover > h2 {
+    color: var(--tcolor);
+}
+
+.s3:focus{
+    box-shadow: 0rem 1rem 2.7rem var(--tcolor);
+}
+
+.s3:focus > h2 {
+    color: var(--tcolor);
+}
+
+h2 {
+    position: relative;
+    transform: translateY(-1rem);
+    text-align: right;
+    font-family: 'Sixtyfour-Regular';
+    font-size: 2rem;
+    letter-spacing: .25rem;
+    color: darkgray;
+    transition: color 1.5s ease;
+    margin: 0;
+}
+
+.s3 h2 {
+    color: lightgray;
+}
+
+.code-box {
+    font-size: 1.6rem;
+    transition: color .5s ease;
+    transition: outline .3s ease;
+    margin-top: .5rem;
+    padding: .25rem;
+    outline: dashed .15rem darkgray;
+}
+
+.s1 .code-box {
+    color: lightgray;
+}
+
+.s2 .code-box {
+    color: lightgray;
+}
+
+.s3 .code-box {
+    color: darkgray;
+}
+
+.s1:hover > .code-box {
+    outline: dashed .15rem var(--dpcolor);
+}
+
+.s2:hover > .code-box {
+    outline: dashed .15rem var(--dscolor);
+}
+
+.s3:hover > .code-box {
+    outline: dashed .15rem var(--tcolor);
+}
+
+.s1:focus > .code-box {
+    outline: dashed .15rem var(--dpcolor);
+}
+
+.s2:focus > .code-box {
+    outline: dashed .15rem var(--dscolor);
+}
+
+.s3:focus > .code-box {
+    outline: dashed .15rem var(--tcolor);
+}
+
+.box:hover > p {
+    color: black;
+}
+
+.box:hover > .code-box {
+    color: black;
+}
+
+.box:focus > p {
+    color: black;
+}
+
+.box:focus > .code-box {
+    color: black;
+}
+
+/* click to select code */
+.code-box:active {
+    user-select: all;
+}
+
+/* using a mobile-first approach, use `min-width` values going from narrow -> wide for a responsive design */
+@media screen and (min-width: 768px) {
+    /* on tablets, set columns to only be 50% of the width and not grow */
+    .head h1 {
+        font-size: 5rem;
+    }
+
+    .head p {
+        font-size: 1.5rem;
+        letter-spacing: 2.5rem;
+    }
+
+    .box {
+      flex: 0 0 calc(50% - 4rem);
+      max-width: calc(50% - 4rem);
+    }
+  
+}
+  
+  /* media query for larger screens */
+@media screen and (min-width: 992px) {
+    .head {
+        margin: 0 auto;
+    }
+
+    .box {
+      flex: 0 0 calc(33.333% - 4rem);
+      max-width: calc(33.333% - 4rem);
+    }
+}
+  
